@@ -13,6 +13,9 @@
 		79420E0220F7C4F000AD4E29 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79420E0120F7C4F000AD4E29 /* User.swift */; };
 		79420E0420F7CA3300AD4E29 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79420E0320F7CA3300AD4E29 /* CreateUsernameViewController.swift */; };
 		79420E0620F7CA6A00AD4E29 /* CreateUsername.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79420E0520F7CA6A00AD4E29 /* CreateUsername.storyboard */; };
+		79420E0820F7D8BB00AD4E29 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79420E0720F7D8BB00AD4E29 /* UserService.swift */; };
+		79436DB120F8825E00DA9BC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79436DB020F8825E00DA9BC0 /* Constants.swift */; };
+		79436DB320F8833D00DA9BC0 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79436DB220F8833D00DA9BC0 /* Storyboard+Utility.swift */; };
 		795CFA9B20F451EA002FC4C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CFA9A20F451EA002FC4C3 /* AppDelegate.swift */; };
 		795CFA9D20F451EA002FC4C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CFA9C20F451EA002FC4C3 /* ViewController.swift */; };
 		795CFAA020F451EA002FC4C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 795CFA9E20F451EA002FC4C3 /* Main.storyboard */; };
@@ -31,6 +34,9 @@
 		79420E0120F7C4F000AD4E29 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79420E0320F7CA3300AD4E29 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		79420E0520F7CA6A00AD4E29 /* CreateUsername.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUsername.storyboard; sourceTree = "<group>"; };
+		79420E0720F7D8BB00AD4E29 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		79436DB020F8825E00DA9BC0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		79436DB220F8833D00DA9BC0 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		795CFA9720F451EA002FC4C3 /* Makestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Makestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		795CFA9A20F451EA002FC4C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		795CFA9C20F451EA002FC4C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,7 @@
 		793DE29B20F69F0100376BA4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				79436DB220F8833D00DA9BC0 /* Storyboard+Utility.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -114,6 +121,7 @@
 		793DE29E20F69F2B00376BA4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				79420E0720F7D8BB00AD4E29 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 			children = (
 				795CFAA620F451EB002FC4C3 /* Info.plist */,
 				793DE2A520F6A02500376BA4 /* GoogleService-Info.plist */,
+				79436DB020F8825E00DA9BC0 /* Constants.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -312,7 +321,10 @@
 			files = (
 				79420E0420F7CA3300AD4E29 /* CreateUsernameViewController.swift in Sources */,
 				79420E0220F7C4F000AD4E29 /* User.swift in Sources */,
+				79420E0820F7D8BB00AD4E29 /* UserService.swift in Sources */,
+				79436DB320F8833D00DA9BC0 /* Storyboard+Utility.swift in Sources */,
 				793DE2AB20F6A68000376BA4 /* LoginViewController.swift in Sources */,
+				79436DB120F8825E00DA9BC0 /* Constants.swift in Sources */,
 				795CFA9D20F451EA002FC4C3 /* ViewController.swift in Sources */,
 				795CFA9B20F451EA002FC4C3 /* AppDelegate.swift in Sources */,
 			);

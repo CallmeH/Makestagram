@@ -23,20 +23,15 @@ class CreateUsernameViewController: UIViewController {
             print("cannot have empty username")
             return
         }
-        let userSetName = ["username": nameField]
-        let ref = Database.database().reference().child("user").child(newUser.uid)
-        
-        ref.setValue(userSetName) { (error, reference) in
-            if let error = error {
-                assertionFailure(error.localizedDescription)
-                return
-            } else {
-                ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    let user = User(snapshot: snapshot)
-                    //handle user further here
-                    print(user?.username)
-                    })
-            }
+        UserService.create(newUser, username: nameField) { (userHere) in
+            guard let i = userHere else {return}
+            print("Created new:\(i.username)")
+            
+            User.setCurrent(i)
+            
+            let initialViewController = UIStoryboard.initializeViewController(for: UIStoryboard.MGType.login)
+            self.view.window?.rootViewController = initialViewController
+            self.view.window?.makeKeyAndVisible()
         }
         
     }

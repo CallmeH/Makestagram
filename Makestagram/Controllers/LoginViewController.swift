@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseUI
 import FirebaseDatabase
 
+typealias FIRUser = FirebaseAuth.User
+
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -28,23 +30,45 @@ extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) { //NBNOTE: did sign in with
         if let error = error {
             assertionFailure("Error signing in: \(error.localizedDescription)") //assertions are only used in developmental stage
+            
+            // just got a fatal error timeout session, reads: Thread 1: Fatal error: Error signing in: Network error (such as timeout, interrupted connection or unreachable host) has occurred.
+            
             return //what is this for?
         }
-        guard  let user = authDataResult?.user else {return}
-        let userRef = Database.database().reference().child("user").child(user.uid)
-        userRef.observeSingleEvent(of: .value, with: {/*added unowned self*/[unowned self] (snapshot) in
-//            if let userDict = snapshot.value as? [String: Any] { // snapshot value exists & of expected type
-            if let userDict = User(snapshot: snapshot) {
-                print("existing!\(userDict.username)")
+        guard let user = authDataResult?.user else {return}
+        UserService.show(forUID: user.uid) { (user) in
+            if let user = user {
+                User.setCurrent(user)
+                let initialViewController = UIStoryboard.initializeViewController(for: UIStoryboard.MGType.main)
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
+                
             } else {
-                self.performSegue(withIdentifier: "toCreateUsername", sender: self)//redirect to create username page
-                print("Newbi!")
-                // write uid into database
+                self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
             }
-            print("handled\(snapshot)")
-        })//event closure to handle data passed back from the database
-        //datasnapshot is an object that contains the data retrieved [dic, array, bool, num, string]
-        print("handle user signup/login")
+            
+            }
+//        guard  let user = authDataResult?.user else {return}
+//        let userRef = Database.database().reference().child("user").child(user.uid)
+//        userRef.observeSingleEvent(of: .value, with: {/*added unowned self, only apply to class-bound protocol types*/[unowned self] (snapshot) in
+////            if let userDict = snapshot.value as? [String: Any] { // snapshot value exists & of expected type
+//            if let userInstance = User(snapshot: snapshot) {
+//                User.setCurrent(userInstance)
+//                print("existing!\(userInstance.username)")
+//                let storyboard = UIStoryboard(name: "Main", bundle: .main)
+//                if let initialViewController = storyboard.instantiateInitialViewController() {
+//                    self.view.window?.rootViewController = initialViewController
+//                    self.view.window?.makeKeyAndVisible()
+//                }
+//            } else {
+//                self.performSegue(withIdentifier: "toCreateUsername", sender: self)//redirect to create username page
+//                print("Newbi!")
+//                // write uid into database
+//            }
+//            print("handled\(snapshot)")
+//        })//event closure to handle data passed back from the database
+//        //datasnapshot is an object that contains the data retrieved [dic, array, bool, num, string]
+//        print("handle user signup/login")
 
     }
 }
