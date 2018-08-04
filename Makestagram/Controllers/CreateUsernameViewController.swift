@@ -29,7 +29,7 @@ class CreateUsernameViewController: UIViewController {
             
             User.setCurrent(i)
             
-            let initialViewController = UIStoryboard.initializeViewController(for: UIStoryboard.MGType.login)
+            let initialViewController = UIStoryboard.initializeViewController(for: UIStoryboard.MGType.main)
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
         }
